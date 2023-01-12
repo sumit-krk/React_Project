@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+// import './App.css';
+import { useDispatch } from 'react-redux';
+import { addToCart, getListOfProduct } from './Redux/action';
+import Header from './component/Header';
+import CartCount from './component/CartCount';
+import { ALL_PRODUCT_LIST } from './Redux/constant';
+import { useEffect } from 'react';
+import ShowProductInUi from './component/ShowProductInUi';
 
 function App() {
+  const dispatch=useDispatch();
+  useEffect(()=>{
+    dispatch(addToCart())
+  },[])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <CartCount /> */}
+      {/* <button onClick={()=>dispatch(addToCart())}>Add To Cart</button> */}
+      {/* <button onClick={()=>dispatch({type:ALL_PRODUCT_LIST})}>Get product list</button> */}
+      <Header />
+      <ShowProductInUi />
     </div>
   );
 }
